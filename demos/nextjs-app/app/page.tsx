@@ -16,9 +16,22 @@ export default function Home() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ prompt }),
     });
-    const data = await res.json();
-    setAnswer(data.result ?? data.error);
-    setLoading(false);
+    if (!res.body) {
+      setAnswer("[error] レスポンスがありません");
+      setLoading(false);
+      return;
+    }
+    const reader = res.body.getReader();
+    const decoder = new TextDecoder();
+    try {
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        setAnswer((prev) => prev + decoder.decode(value, { stream: true }));
+      }
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
