@@ -1,0 +1,8 @@
+{
+  // VSCode 標準の AI 機能（Copilot Chat・インライン補完など）を非表示にする。
+  // 参加者が Claude Code 拡張と混同しないようにするため。
+  "chat.disableAIFeatures": true,
+
+  // Claude Code 拡張のサインイン画面を出さず、環境変数 ANTHROPIC_API_KEY（Codespaces の Secret）で認証する
+  "claudeCode.disableLoginPrompt": true
+}
