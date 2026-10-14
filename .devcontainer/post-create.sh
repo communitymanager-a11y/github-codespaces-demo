@@ -16,4 +16,7 @@ for app in nextjs-chat nextjs-customer-center nextjs-fukuoka-ai; do
   npm install --prefix demos/$app
 done
 
+echo "==> MuJoCo (ブラウザ) デモの依存をインストール"
+npm install --prefix demos/mujoco-web
+
 echo "==> セットアップ完了"

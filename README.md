@@ -11,6 +11,7 @@ GitHub Codespaces が非エンジニア向けのワークショップで使え�
 - Claude Agent SDK を自動インストールして、簡単なデモをTypeScript/Pythonで作成し、実行
 - JupyterNotebook をVSCodeで開いて、コードを実行
 - Next.jsを自動インストールして、デモと連携
+- MuJoCo（物理シミュレーター）をブラウザで動かし、ボタン・音声・Web カメラで操作できるかを検証
 - このリポジトリは公開し、Codespaces を README.md に記載されたリンクから開始できるかを検証
 
 ## 使い方（ワークショップ参加者向け）
@@ -34,6 +35,17 @@ GitHub Codespaces が非エンジニア向けのワークショップで使え�
 | Next.js 福岡市AI(市政だより) | `npm run dev --prefix demos/nextjs-fukuoka-ai` → ポート 3002 |
 | Jupyter Notebook | `demos/notebook/demo.ipynb` を開き、カーネルに `.venv` を選んで実行 |
 | Next.js チャット | `npm run dev --prefix demos/nextjs-chat` → 自動で開くブラウザのタブ（ポート 3000） |
+| MuJoCo ロボット（ブラウザ） | `npm run dev --prefix demos/mujoco-web` → ポート 3003（ボタン・音声・Web カメラで操作。下記参照） |
+
+### MuJoCo ロボットデモ（ブラウザ）
+
+MuJoCo の公式 WebAssembly 版（`@mujoco/mujoco`）を使い、物理シミュレーションと 3D 描画をすべてブラウザ内で行う。Codespace はファイルを配信するだけなので、GPU は不要。
+
+- **ボタン**: 上・下・前・後ろ・左・右でアームの手先を動かし、「つかむ」「はなす」で赤い箱をつかむ
+- **音声**: 「🎤 聞き取り開始」を押して「前、下、下、下、つかんで、上、左、はなして」のように話す（文字入力欄でも同じ操作ができる）
+- **カメラ**: 「📷 カメラ開始」を押すと、Web カメラの映像が画面右とシミュレーター内のモニターに映る
+
+> マイクとカメラは、VS Code 内のプレビュー（Simple Browser）では許可できないことがある。ポートタブの地球儀アイコンから **Chrome か Edge で開く**。音声認識は Firefox では使えない。
 
 ### 作ったものを自分の GitHub にアップロードする
 

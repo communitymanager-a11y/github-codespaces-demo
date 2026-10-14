@@ -19,6 +19,10 @@
   },
 
   "customizations": {
+    // Codespace を開いたときに README を表示する
+    "codespaces": {
+      "openFiles": ["README.md"]
+    },
     "vscode": {
       "extensions": [
         "anthropic.claude-code",
@@ -31,10 +35,14 @@
     }
   },
 
-  "forwardPorts": [3000],
+  "forwardPorts": [3000, 3003],
   "portsAttributes": {
     "3000": {
       "label": "Next.js demo",
+      "onAutoForward": "openBrowser"
+    },
+    "3003": {
+      "label": "MuJoCo demo",
       "onAutoForward": "openBrowser"
     }
   },

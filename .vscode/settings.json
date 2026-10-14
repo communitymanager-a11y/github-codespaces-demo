@@ -7,5 +7,15 @@
   "claudeCode.disableLoginPrompt": true,
 
   // 長い行を折り返して、横スクロールなしで読めるようにする
-  "editor.wordWrap": "on"
+  "editor.wordWrap": "on",
+
+  // 行番号を表示する（Notebook のセルは既定で非表示のため明示する）
+  "editor.lineNumbers": "on",
+  "notebook.lineNumbers": "on",
+
+  // 保存忘れを防ぐため、編集後に自動保存する
+  "files.autoSave": "afterDelay",
+
+  // 画面を広く使うため、右端のミニマップを非表示にする
+  "editor.minimap.enabled": false
 }

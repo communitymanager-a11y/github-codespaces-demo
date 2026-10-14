@@ -1,0 +1,167 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  color: #1d2330;
+  background: #f6f7f9;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  height: 100vh;
+}
+
+#viewer {
+  position: relative;
+  min-height: 0;
+}
+
+#viewer canvas {
+  display: block;
+}
+
+#loading {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #667;
+}
+
+aside {
+  overflow-y: auto;
+  padding: 16px 20px;
+  border-left: 1px solid #dde1e7;
+  background: #fff;
+}
+
+h1 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+h2 {
+  margin: 20px 0 8px;
+  font-size: 14px;
+  color: #556;
+}
+
+button {
+  padding: 8px 12px;
+  border: 1px solid #c8ced8;
+  border-radius: 6px;
+  background: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #f0f3f7;
+}
+
+button:active {
+  background: #e2e7ee;
+}
+
+.pad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.row {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.row > * {
+  flex: 1;
+}
+
+.toggle {
+  width: 100%;
+}
+
+.toggle.on {
+  border-color: #d33;
+  background: #fdecec;
+}
+
+input {
+  min-width: 0;
+  padding: 8px;
+  border: 1px solid #c8ced8;
+  border-radius: 6px;
+  font: inherit;
+}
+
+.hint {
+  margin: 6px 0;
+  font-size: 12px;
+  color: #778;
+}
+
+.transcript {
+  min-height: 2.5em;
+  margin: 6px 0;
+  padding: 8px;
+  border-radius: 6px;
+  background: #f3f5f8;
+}
+
+.transcript.interim {
+  color: #889;
+}
+
+video {
+  display: none;
+  width: 100%;
+  margin-top: 8px;
+  border-radius: 6px;
+  background: #000;
+  transform: scaleX(-1);
+}
+
+video.on {
+  display: block;
+}
+
+.error {
+  padding: 8px;
+  border-radius: 6px;
+  color: #a11;
+  background: #fdecec;
+}
+
+dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 12px;
+  margin: 0;
+  font-size: 13px;
+}
+
+dt {
+  color: #667;
+}
+
+dd {
+  margin: 0;
+}
+
+@media (max-width: 720px) {
+  main {
+    grid-template-columns: 1fr;
+    grid-template-rows: 55vh auto;
+    height: auto;
+  }
+
+  aside {
+    border-left: none;
+  }
+}
