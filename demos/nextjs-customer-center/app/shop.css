@@ -1,0 +1,47 @@
+/* 通販サイト風のスタイル（配色とレイアウトのみ。特定ブランドのロゴや名称は使わない） */
+body { background: #eaeded; color: #0f1111; }
+
+.shop-header { background: #131921; color: #fff; display: flex; align-items: center; gap: 16px; padding: 8px 16px; }
+.shop-logo { font-size: 24px; font-weight: 700; letter-spacing: -0.5px; }
+.shop-logo span { color: #ff9900; }
+.shop-search { flex: 1; display: flex; max-width: 720px; }
+.shop-search input { flex: 1; border: 0; border-radius: 4px 0 0 4px; padding: 10px 12px; font-size: 15px; }
+.shop-search button { border: 0; background: #febd69; border-radius: 0 4px 4px 0; padding: 0 16px; font-size: 16px; cursor: pointer; }
+.shop-links { display: flex; gap: 20px; font-size: 13px; white-space: nowrap; }
+.shop-links b { display: block; font-size: 14px; }
+.shop-nav { background: #232f3e; color: #fff; display: flex; gap: 18px; padding: 8px 16px; font-size: 14px; overflow-x: auto; white-space: nowrap; }
+
+.shop-body { display: grid; grid-template-columns: 1fr 420px; gap: 20px; max-width: 1280px; margin: 0 auto; padding: 20px 16px; align-items: start; }
+@media (max-width: 900px) { .shop-body { grid-template-columns: 1fr; } .shop-links { display: none; } }
+
+.shop-body h1, .chat-head { font-size: 22px; font-weight: 400; margin: 0 0 12px; }
+.card { background: #fff; border: 1px solid #d5d9d9; border-radius: 8px; margin-bottom: 14px; overflow: hidden; }
+.card-head { background: #f0f2f2; border-bottom: 1px solid #d5d9d9; padding: 12px 16px; display: flex; gap: 32px; font-size: 12px; color: #565959; }
+.card-head b { display: block; font-size: 14px; color: #0f1111; font-weight: 400; }
+.card-main { display: flex; gap: 16px; padding: 16px; align-items: center; }
+.thumb { width: 80px; height: 80px; background: #f7f8f8; border-radius: 6px; display: grid; place-items: center; font-size: 44px; flex: none; }
+.card-main h3 { margin: 0 0 4px; font-size: 16px; color: #007185; font-weight: 500; }
+.status { font-weight: 700; }
+.status.done { color: #007600; }
+.status.ship { color: #c45500; }
+.btn { border: 1px solid #fcd200; background: #ffd814; border-radius: 20px; padding: 7px 16px; font-size: 14px; cursor: pointer; color: #0f1111; }
+.btn:hover { background: #f7ca00; }
+.btn:disabled { opacity: 0.6; cursor: default; }
+.btn.sub { background: #fff; border-color: #d5d9d9; }
+.btn.sub:hover { background: #f7fafa; }
+.btn.warn { background: #ffa41c; border-color: #ff8f00; }
+.card-actions { margin-left: auto; display: flex; flex-direction: column; gap: 8px; }
+
+.chat { position: sticky; top: 16px; }
+.chat-box { background: #fff; border: 1px solid #d5d9d9; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; max-height: calc(100vh - 40px); }
+.chat-title { background: #232f3e; color: #fff; padding: 12px 16px; font-weight: 700; }
+.chat-title small { display: block; font-weight: 400; color: #ccc; }
+.chat-log { padding: 12px; overflow-y: auto; min-height: 260px; flex: 1; background: #f7f8f8; }
+.msg { margin: 0 0 8px; padding: 8px 12px; border-radius: 12px; white-space: pre-wrap; max-width: 88%; font-size: 14px; line-height: 1.6; }
+.msg.user { background: #ffd814; margin-left: auto; }
+.msg.agent { background: #fff; border: 1px solid #d5d9d9; }
+.msg.tool { background: none; color: #565959; font-size: 12px; padding: 0 4px; }
+.approve { border: 2px solid #ff9900; border-radius: 8px; background: #fff8e7; margin: 8px 12px; padding: 12px; font-size: 14px; }
+.approve pre { white-space: pre-wrap; font-size: 12px; margin: 8px 0; }
+.chat-form { display: flex; gap: 8px; padding: 12px; border-top: 1px solid #d5d9d9; }
+.chat-form textarea { flex: 1; resize: none; font-size: 14px; padding: 8px; border: 1px solid #a6a6a6; border-radius: 6px; }

@@ -12,6 +12,8 @@ echo "==> Agent SDK (TypeScript) デモの依存をインストール"
 npm install --prefix demos/agent-sdk-ts
 
 echo "==> Next.js デモの依存をインストール"
-npm install --prefix demos/nextjs-app
+for app in nextjs-chat nextjs-customer-center nextjs-fukuoka-ai; do
+  npm install --prefix demos/$app
+done
 
 echo "==> セットアップ完了"

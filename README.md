@@ -29,8 +29,11 @@ GitHub Codespaces が非エンジニア向けのワークショップで使え�
 | Claude Code VSCode 拡張 | 左のサイドバーの Claude アイコン |
 | Agent SDK (TypeScript) | `npm start --prefix demos/agent-sdk-ts` |
 | Agent SDK (Python) | `.venv/bin/python demos/agent-sdk-python/main.py` |
+| Agent SDK カスタマーセンター (Python) | `.venv/bin/python demos/customer-center-python/main.py`（対話形式。返金は端末で `y` を入力して承認） |
+| Next.js カスタマーセンター | `npm run dev --prefix demos/nextjs-customer-center` → ポート 3001（返金は画面のボタンで承認） |
+| Next.js 福岡市AI(市政だより) | `npm run dev --prefix demos/nextjs-fukuoka-ai` → ポート 3002 |
 | Jupyter Notebook | `demos/notebook/demo.ipynb` を開き、カーネルに `.venv` を選んで実行 |
-| Next.js | `npm run dev --prefix demos/nextjs-app` → 自動で開くブラウザのタブ |
+| Next.js チャット | `npm run dev --prefix demos/nextjs-chat` → 自動で開くブラウザのタブ（ポート 3000） |
 
 ### 作ったものを自分の GitHub にアップロードする
 
