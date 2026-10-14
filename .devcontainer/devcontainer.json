@@ -1,0 +1,43 @@
+{
+  "name": "GitHub Codespaces Demo",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+
+  // Codespaces では vscode ユーザーで動く。
+  // ローカルの rootless Docker では、コンテナ内 root = ホストの自分になるため
+  // `export DEVCONTAINER_USER=root` を設定してから起動する。
+  "containerUser": "${localEnv:DEVCONTAINER_USER:vscode}",
+  "remoteUser": "${localEnv:DEVCONTAINER_USER:vscode}",
+
+  // Codespace 作成画面で入力欄が表示され、環境変数として設定される
+  "secrets": {
+    "ANTHROPIC_API_KEY": {
+      "description": "Claude API キー（Claude Console で発行した sk-ant- で始まるキー）",
+      "documentationUrl": "https://platform.claude.com/settings/keys"
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "anthropic.claude-code",
+        "ms-python.python",
+        "ms-toolsai.jupyter"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python"
+      }
+    }
+  },
+
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Next.js demo",
+      "onAutoForward": "openBrowser"
+    }
+  },
+
+  "postCreateCommand": "bash .devcontainer/post-create.sh"
+}
