@@ -3,8 +3,8 @@
 #
 # Claude Code は対話モード（VSCode 拡張・ターミナルの claude）で ANTHROPIC_API_KEY を使う前に
 # 「Detected a custom API key in your environment」の承認を 1 回求める（既定は No）。
-# 拡張ではこの確認に答えられず "Not logged in" になるため、~/.claude.json に承認済みとして記録しておく。
-# あわせて、ワークスペースのフォルダを信頼済みにするなど、初回の確認画面を省く。
+# 拡張ではこの確認に答えられず "Not logged in" になるため、~/.claude.json に承認済みとして記録する。
+# あわせて、テーマ選択とフォルダの信頼確認の画面も省く。
 set -euo pipefail
 
 if [ -z "${ANTHROPIC_API_KEY:-}" ]; then
@@ -12,31 +12,12 @@ if [ -z "${ANTHROPIC_API_KEY:-}" ]; then
   exit 0
 fi
 
-WORKSPACE="$(cd "$(dirname "$0")/.." && pwd)"
-
-python3 - "$WORKSPACE" <<'EOF'
-import json
-import os
-import sys
-from pathlib import Path
-
-path = Path.home() / ".claude.json"
-config = json.loads(path.read_text()) if path.exists() else {}
+CONFIG=~/.claude.json
+[ -f "$CONFIG" ] || echo '{}' > "$CONFIG"
 
 # Claude Code はキーの末尾 20 文字で承認済みかどうかを判定する
-key_suffix = os.environ["ANTHROPIC_API_KEY"][-20:]
-responses = config.setdefault("customApiKeyResponses", {"approved": [], "rejected": []})
-responses.setdefault("approved", [])
-responses.setdefault("rejected", [])
-if key_suffix not in responses["approved"]:
-    responses["approved"].append(key_suffix)
-if key_suffix in responses["rejected"]:
-    responses["rejected"].remove(key_suffix)
-
-# ターミナルの claude で初回に出るテーマ選択画面を省く
-config.setdefault("hasCompletedOnboarding", True)
-config.setdefault("projects", {}).setdefault(sys.argv[1], {})["hasTrustDialogAccepted"] = True
-
-path.write_text(json.dumps(config, indent=2))
-print("Claude Code に ANTHROPIC_API_KEY を承認済みとして登録しました")
-EOF
+jq --arg key "${ANTHROPIC_API_KEY: -20}" --arg dir "$PWD" '
+  .customApiKeyResponses.approved = ((.customApiKeyResponses.approved // []) + [$key] | unique)
+  | .hasCompletedOnboarding = true
+  | .projects[$dir].hasTrustDialogAccepted = true
+' "$CONFIG" > "$CONFIG.tmp" && mv "$CONFIG.tmp" "$CONFIG"

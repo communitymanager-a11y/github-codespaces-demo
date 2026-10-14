@@ -23,6 +23,7 @@ RUN apt-get update \
     curl \
     git \
     gnupg \
+    jq \
     less \
     python3 \
     python3-venv \
