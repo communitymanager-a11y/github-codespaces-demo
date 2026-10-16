@@ -4,6 +4,8 @@
 
 GitHub Codespaces が非エンジニア向けのワークショップで使えるかの検証用のリポジトリ
 
+a
+
 ## 検証内容
 
 - Claude Code CLI を自動インストールして、Claude API 経由でコード生成
